@@ -22,6 +22,14 @@ class TestController extends AbstractController
     public function check(Request $request)
     {
         $answers = $request->request->all();
+        $validation = $this->validate($answers);
+        if ($validation)
+        {
+            $message = 'Please fill in all fields';
+            return $this->render('test/result.html.twig',[
+                'message' => $message
+            ]);
+        }
         $result = $this->checkTest($answers);
         $right_answers = ['curse' => 'Avada Kedavra', 'bird' => 'Fawkes'];
         return $this->render('test/my_result.html.twig', [
@@ -109,5 +117,18 @@ class TestController extends AbstractController
         }
         $result = ['errors' => $errors, 'points' => $points];
         return $result;
+    }
+    public function validate($answers)
+    {
+        $error = false;
+        if (!isset($answers['horcrux']))
+        {
+            $error = true;
+        }
+        if (!isset($answers['hallows']))
+        {
+            $error = true;
+        }
+        return $error;
     }
 }

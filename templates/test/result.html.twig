@@ -1,6 +1,7 @@
 {% extends 'base.html.twig' %}
 {% block body %}
     <div class="example-wrapper">
+        <h3 style="color: red">{{ errors.message }}</h3>
         <h2 style="margin-left: 200px">Hello, Dear Friend!</h2>
         <h3 style="margin-left: 175px">Please answer the questions</h3>
         <form class="form-group" action="{{ path('check') }}" method="post">
@@ -15,14 +16,14 @@
             </div>
             <label>2. Which of the following were Lord Voldemort's horcrux?</label>
             <div class="question">
-                <div id="diadem"><input type="checkbox" name="horcrux[]" value="diadem" required>Ravenclaw's Diadem</div>
+                <div id="diadem"><input type="checkbox" name="horcrux[]" value="diadem" >Ravenclaw's Diadem</div>
                 <div class="{{ errors.sword ?? "gray" }}"><input type="checkbox" name="horcrux[]" value="sword">Sword of
                     Gryffindor
                 </div>
-                <div class="{{ errors.hat ?? "gray" }}"><input type="checkbox" name="horcrux[]" value="hat">Sorting
+                <div class="{{ errors.hat ?? "gray" }}"><input required  type="checkbox" name="horcrux[]" value="hat">Sorting
                     Hat
                 </div>
-                <div id="diary"><input type="checkbox" name="horcrux[]" value="diary">T. M. Riddle's Diary</div>
+                <div id="diary"><input required id="a-3" type="checkbox" name="horcrux[]" value="diary">T. M. Riddle's Diary</div>
             </div>
             <label>3. What a killing curse is so useless against Harry?</label>
             <div class="question {{ errors.curse ?? "" }}"><input style=" color: #2F4F4F;" required type="text" name="curse"
@@ -47,7 +48,7 @@
             <div style="color: green; margin: 20px">{{ right_answers.bird ?? null }}</div>
             <label>6. Which of the following are called Deathly Hallows?</label>
             <div class="question">
-                <div id="wand"><input type="checkbox" name="hallows[]" value="wand" required>Elder Wand</div>
+                <div id="wand"><input type="checkbox" name="hallows[]" value="wand" >Elder Wand</div>
                 <div id="stone"><input type="checkbox" name="hallows[]" value="stone">Resurrection Stone</div>
                 <div class="{{ errors.wine ?? "gray" }}"><input type="checkbox" name="hallows[]" value="wine">Horace
                     Slughorn's Butterbeer Wine
