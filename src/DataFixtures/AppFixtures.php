@@ -17,6 +17,8 @@ class AppFixtures extends Fixture
         $user->setEmail('vologdalogda@mail.ru');
         $date = new DateTimeImmutable("1996-09-12 11:45 Europe/Moscow");
         $user->setBirthDate(\DateTime::createFromImmutable($date));
+        $password = sha1('nastya_vol');
+        $user->setPassword($password);
         $manager->persist($user);
 
         $user = new User();
@@ -25,6 +27,8 @@ class AppFixtures extends Fixture
         $user->setEmail('polertnov@mail.ru');
         $date = new DateTimeImmutable("1989-05-23 23:23 Europe/Moscow");
         $user->setBirthDate(\DateTime::createFromImmutable($date));
+        $password = sha1('vladimir12676');
+        $user->setPassword($password);
         $manager->persist($user);
 
         $user = new User();
@@ -33,6 +37,8 @@ class AppFixtures extends Fixture
         $user->setEmail('ivanchuk@mail.ru');
         $date = new DateTimeImmutable("1988-12-22 15:44 Europe/Moscow");
         $user->setBirthDate(\DateTime::createFromImmutable($date));
+        $password = sha1('svetlana_iv');
+        $user->setPassword($password);
         $manager->persist($user);
 
         $user = new User();
@@ -41,6 +47,8 @@ class AppFixtures extends Fixture
         $user->setEmail('elkate@mail.ru');
         $date = new DateTimeImmutable("1996-11-13 16:27 Europe/Moscow");
         $user->setBirthDate(\DateTime::createFromImmutable($date));
+        $password = sha1('elkate89823');
+        $user->setPassword($password);
         $manager->persist($user);
 
         $user = new User();
@@ -49,6 +57,8 @@ class AppFixtures extends Fixture
         $date = new DateTimeImmutable("1985-03-18 00:55 Europe/London");
         $user->setBirthDate(\DateTime::createFromImmutable($date));
         $user->setEmail('JohnSmith@mail.ru');
+        $password = sha1('ratatyi1256');
+        $user->setPassword($password);
         $manager->persist($user);
 
         $manager->flush();
