@@ -1,0 +1,61 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello TestController!{% endblock %}
+
+{% block body %}
+<style>
+    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
+    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+</style>
+
+<div class="example-wrapper">
+    <h1>Hello Friend! ✅</h1>
+    <form class="form-group" action="{{ path('check') }}" method="post" >
+{#        action="{{ path('book_delete', {'id': book.id}) }}#}
+{#        <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ book.id) }}">#}
+        <label>1. How many faculties at Hogwarts School of witchcraft and wizardy?</label>
+        <div class="question">
+            <div id="three"> <input  type="radio" name="faculties" value="three">Three<br></div>
+            <div id="four"><input type="radio" name="faculties" value="four">Four<br></div>
+            <div id="five"><input type="radio" name="faculties" value="five">Five and more<br></div>
+            <div id="none"><input type="radio" name="faculties" value="one">There are no faculties<br></div>
+        </div>
+        <div class="js-user-rating" data-is-authenticated="{{(errors.curse ?? null)}}">
+        </div>
+        <label>2 . Which of the following were Lord Voldemort's horcrux?</label>
+        <div class="question">
+            <input type="checkbox" name="horcrux[]" value="diadem">Ravenclaw's Diadem<br>
+            <input type="checkbox" name="horcrux[]" value="sword">Sword of Gryffindor<br>
+            <input type="checkbox" name="horcrux[]" value="hat">Sorting Hat<br>
+            <input type="checkbox" name="horcrux[]" value="diary">T. M. Riddle's Diary<br>
+        </div>
+        <label>3. What a killing curse is so useless against Harry?</label>
+        <div><input class="question" type="text" name="curse">{{ curse ?? null }}</div>
+        <label>4. Ron Weasley's greatest fear is :</label>
+        <div class="question">
+            <input type="radio" name="fear" value="willow">Whomping Willow<br>
+            <input type="radio" name="fear" value="spiders">Spiders<br>
+            <input type="radio" name="fear" value="snape">Professor Severus Snape<br>
+            <input type="radio" name="fear" value="hermione">Angry Hermione Granger<br>
+        </div>
+        <label>5. What was the name of the bird that saved Harry's life with her tears?</label>
+        <div class="question"><input type="text" name="bird" value="{{ errors.curse ?? null }}"><span style="color: green">{{ curse ?? null }}</div>
+        <label>6. Which of the following are called Deathly Hallows?</label>
+        <div class="question">
+            <input type="checkbox" name="hallows[]" value="wand">Elder Wand<br>
+            <input type="checkbox" name="hallows[]" value="stone">Resurrection Stone<br>
+            <input type="checkbox" name="hallows[]" value="wine">Horace Slughorn's Butterbeer Wine<br>
+            <input type="checkbox" name="hallows[]" value="cloak">Invisibility cloak<br>
+        </div>
+        <button type="submit" class="btn btn-default ">Answer</button>
+    </form>
+</div>
+    <script>
+
+
+        // $(document).ready(function() {
+        //     var isAuthenticated = $('.js-user-rating').data('is-authenticated');
+        //     alert(isAuthenticated);
+        // });
+    </script>
+{% endblock %}

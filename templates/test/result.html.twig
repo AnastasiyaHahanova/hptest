@@ -1,0 +1,60 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+    <div class="example-wrapper">
+        <h2 style="margin-left: 200px">Hello, Dear Friend!</h2>
+        <h3 style="margin-left: 175px">Please answer the questions</h3>
+        <form class="form-group" action="{{ path('check') }}" method="post">
+            <label>1. How many faculties at Hogwarts School of witchcraft and wizardy?</label>
+            <div class="question">
+                <div class="{{ errors.three ?? "gray" }}"><input type="radio" name="faculties" value="three" required>Three</div>
+                <div id="four"><input type="radio" name="faculties" value="four">Four</div>
+                <div class="{{ errors.five ?? "gray" }}"><input type="radio" name="faculties" value="five">Five and more<br>
+                </div>
+                <div class="{{ errors.none ?? "gray" }}"><input type="radio" name="faculties" value="none">There are no
+                    faculties<br></div>
+            </div>
+            <label>2. Which of the following were Lord Voldemort's horcrux?</label>
+            <div class="question">
+                <div id="diadem"><input type="checkbox" name="horcrux[]" value="diadem" required>Ravenclaw's Diadem</div>
+                <div class="{{ errors.sword ?? "gray" }}"><input type="checkbox" name="horcrux[]" value="sword">Sword of
+                    Gryffindor
+                </div>
+                <div class="{{ errors.hat ?? "gray" }}"><input type="checkbox" name="horcrux[]" value="hat">Sorting
+                    Hat
+                </div>
+                <div id="diary"><input type="checkbox" name="horcrux[]" value="diary">T. M. Riddle's Diary</div>
+            </div>
+            <label>3. What a killing curse is so useless against Harry?</label>
+            <div class="question {{ errors.curse ?? "" }}"><input style=" color: #2F4F4F;" required type="text" name="curse"
+                                                                  value="{{ errors.error_curse ??  right_answers.curse ?? null }}"></div>
+            <div style="color: green; margin: 20px">{{ right_answers.curse ?? null }}</div>
+            <label>4. Ron Weasley's greatest fear is :</label>
+            <div class="question">
+                <div class="{{ errors.willow ?? "gray" }}"><input id="willow" type="radio" name="fear" value="willow" required>Whomping
+                    Willow
+                </div>
+                <div id="spiders"><input type="radio" name="fear" value="spiders">Spiders</div>
+                <div class="{{ errors.snape ?? "gray" }}"><input id="" type="radio" name="fear" value="snape">Professor
+                    Severus Snape
+                </div>
+                <div class="{{ errors.hermione ?? "gray" }}"><input type="radio" name="fear" value="hermione">Angry
+                    Hermione Granger
+                </div>
+            </div>
+            <label>5. What was the name of the bird that saved Harry's life with her tears?</label>
+            <div class="question {{ errors.bird ?? "" }}"><input required  style=" color: #2F4F4F;" type="text" name="bird"
+                                                                 value="{{ errors.bird_name ?? right_answers.bird ?? null }}"></div>
+            <div style="color: green; margin: 20px">{{ right_answers.bird ?? null }}</div>
+            <label>6. Which of the following are called Deathly Hallows?</label>
+            <div class="question">
+                <div id="wand"><input type="checkbox" name="hallows[]" value="wand" required>Elder Wand</div>
+                <div id="stone"><input type="checkbox" name="hallows[]" value="stone">Resurrection Stone</div>
+                <div class="{{ errors.wine ?? "gray" }}"><input type="checkbox" name="hallows[]" value="wine">Horace
+                    Slughorn's Butterbeer Wine
+                </div>
+                <div id="cloak"><input type="checkbox" name="hallows[]" value="cloak">Invisibility cloak</div>
+            </div>
+            <button id="button" type="submit" class="btn btn-default ">Answer</button>
+        </form>
+    </div>
+{% endblock %}
