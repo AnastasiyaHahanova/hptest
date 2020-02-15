@@ -8,7 +8,7 @@ use Symfony\Component\Security\Core\User\UserInterface;
 /**
  * @ORM\Entity(repositoryClass="App\Repository\UserRepository")
  */
-class User implements UserInterface
+class User implements UserInterface, \Serializable
 {
     /**
      * @ORM\Id()
@@ -45,6 +45,11 @@ class User implements UserInterface
      * @ORM\Column(type="string", length=255)
      */
     private $password;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $login;
 
     /**
      * @ORM\Column(type="string", length=255)
@@ -116,7 +121,7 @@ class User implements UserInterface
     }
     public function getRoles()
     {
-        // TODO: Implement getRoles() method.
+        return ['ROLE_USER'];
     }
 
     public function getSalt()
@@ -141,6 +146,41 @@ class User implements UserInterface
     public function setApiToken(string $api_token): self
     {
         $this->apiToken = $api_token;
+
+        return $this;
+    }
+    public function serialize()
+    {
+        return $this->serialize([
+            $this->id,
+            $this->first_name,
+            $this->second_name,
+            $this->email,
+            $this->login,
+            $this->password
+        ]);
+    }
+
+    public function unserialize($serialized)
+    {
+        list(
+            $this->id,
+            $this->first_name,
+            $this->second_name,
+            $this->email,
+            $this->login,
+            $this->password
+            ) = $this->unserialize($serialized,['allowed_classes' => false]);
+    }
+
+    public function getLogin(): ?string
+    {
+        return $this->login;
+    }
+
+    public function setLogin(string $login): self
+    {
+        $this->login = $login;
 
         return $this;
     }

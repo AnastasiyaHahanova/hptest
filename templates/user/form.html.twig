@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+    <h2></h2>
+    <div class="example-wrapper">
+        <form class="form-group" action="{{ path('create_user') }}" method="post">
+            <label>First Name</label>
+            <div class="question"><input name="first_name" required></div>
+            <label>Second Name</label>
+            <div class="question"><input name="second_name" required></div>
+            <label>Birth Date</label>
+            <div class="question"><input name="birth_date" required></div>
+            <label>Email</label>
+            <div class="question"><input name="email" type="email" required></div>
+            <label>Login</label>
+            <div class="question"><input name="login" required></div>
+            <label>Password</label>
+            <div class="question"><input name="password" type="password" required></div>
+            <button class="btn">Save</button>
+        </form>
+    </div>
+{% endblock %}

@@ -1,0 +1,20 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello SecurityController!{% endblock %}
+
+{% block body %}
+    {% if error %}
+        <span>
+            {{ error.messageKey }}
+        </span>
+    {% endif %}
+
+    <div class="example-wrapper">
+        <h1>Login </h1>
+        <form action="{{ path('login') }}" method="post">
+            <div><input name="_username" type="text" value="{{ last_username ?? null }}"></div>
+            <div><input name="_password" type="password"></div>
+            <button type="submit" class="btn btn-default" style="margin-left: 0px;">Login</button>
+        </form>
+    </div>
+{% endblock %}

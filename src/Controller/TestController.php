@@ -14,7 +14,7 @@ class TestController extends AbstractController
      */
     public function index()
     {
-        return $this->render('test/result.html.twig');
+        return $this->render('test/test.html.twig');
     }
     /**
      * @Route("/check", name="check", methods={"GET","POST"})
@@ -26,13 +26,13 @@ class TestController extends AbstractController
         if ($validation)
         {
             $message = 'Please fill in all fields';
-            return $this->render('test/result.html.twig',[
+            return $this->render('test/test.html.twig',[
                 'message' => $message
             ]);
         }
         $result = $this->checkTest($answers);
         $right_answers = ['curse' => 'Avada Kedavra', 'bird' => 'Fawkes'];
-        return $this->render('test/my_result.html.twig', [
+        return $this->render('test/result.html.twig', [
             'errors' => $result['errors'],
             'right_answers' => $right_answers,
             'points' => $result['points']
